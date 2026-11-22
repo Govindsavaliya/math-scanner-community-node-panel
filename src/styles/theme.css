@@ -1,0 +1,142 @@
+/* Design tokens. Values swap with the `dark` class on <html> (set by useTheme / the bootstrap script in index.html). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --white: #ffffff;
+  --light: #f8fafc;
+  --surface-2: #f1f5f9;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-solid: #4f46e5;
+  --primary-solid-hover: #4338ca;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --info: #0284c7;
+  --border: #e2e8f0;
+  --font-white: #ffffff;
+  --box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-dropdown: 0 8px 24px rgba(15, 23, 42, 0.1);
+  --shadow-modal: 0 16px 48px rgba(15, 23, 42, 0.16);
+}
+
+html.dark {
+  --white: #111827;
+  --light: #0b1120;
+  --surface-2: #1e293b;
+  --dark: #f1f5f9;
+  --gray: #94a3b8;
+  --primary: #818cf8;
+  --primary-hover: #a5b4fc;
+  /* Filled buttons keep white text, so they use a deeper indigo than the accent colour. */
+  --primary-solid: #6366f1;
+  --primary-solid-hover: #818cf8;
+  --success: #4ade80;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --info: #38bdf8;
+  --border: #334155;
+  --box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-modal: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@theme {
+  --font-sans: "Inter Variable", "Inter Variable", "Inter", system-ui, sans-serif;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-solid: var(--primary-solid);
+  --color-primary-solid-hover: var(--primary-solid-hover);
+  --color-surface-2: var(--surface-2);
+  --shadow-dropdown: var(--shadow-dropdown);
+  --shadow-modal: var(--shadow-modal);
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --color-surface: var(--white);
+  --color-canvas: var(--light);
+  --color-ink: var(--dark);
+  --color-muted: var(--gray);
+  --color-line: var(--border);
+  --shadow-card: var(--box-shadow);
+}
+
+/* Unlayered so it outranks rsuite's / the browser's own font rules on the root and form controls. */
+html,
+body {
+  font-variant-numeric: normal;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea,
+.rs-picker-toggle,
+.rs-picker-menu,
+.rs-btn {
+  font-family: var(--font-sans);
+}
+
+/* Unlayered so it outranks rsuite's / the browser's own font rules on the root and form controls. */
+html,
+body,
+button,
+input,
+select,
+textarea,
+.rs-picker-toggle,
+.rs-picker-menu,
+.rs-btn {
+  font-family: var(--font-sans);
+}
+
+/* Keep browser autofill from painting fields white in dark mode. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--dark);
+  box-shadow: 0 0 0 1000px var(--white) inset;
+  caret-color: var(--dark);
+}

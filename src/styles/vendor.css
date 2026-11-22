@@ -1,0 +1,214 @@
+/*
+ * The only hand-written CSS: element defaults and skins for third-party markup we cannot put classes on.
+ * Everything else is Tailwind utilities in JSX. Colour tokens come from theme.css.
+ * Import after the third-party stylesheets (rsuite) so these rules win at equal specificity.
+ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: var(--light);
+    color: var(--dark);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  a:hover {
+    color: var(--primary);
+  }
+
+  /* Table headers follow the cell/row alignment instead of the browser's centred default. */
+  th {
+    text-align: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--font-white);
+  }
+
+  select {
+    background-color: var(--light);
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: var(--dark);
+    background-color: var(--light);
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 0.325rem;
+}
+
+/* react-toastify */
+.Toastify__close-button--light {
+  color: var(--dark);
+  opacity: 1;
+}
+
+/* rsuite SelectPicker */
+.rs-picker-default .rs-picker-toggle {
+  min-height: 40px;
+  padding: 0.375rem 0.75rem;
+  border-color: var(--light);
+  border-radius: 0.625rem;
+  background-color: var(--light);
+  color: var(--dark);
+  font-size: 15px;
+  font-weight: 500;
+}
+.rs-picker-default .rs-picker-toggle.rs-btn {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  color: var(--dark);
+}
+.rs-picker-default .rs-picker-toggle.rs-btn .rs-picker-toggle-placeholder,
+.rs-picker-default .rs-picker-toggle.rs-btn .rs-picker-toggle-value {
+  color: var(--dark);
+}
+.rs-picker-default .rs-picker-toggle.rs-btn .rs-picker-toggle-caret,
+.rs-picker-default .rs-picker-toggle.rs-btn .rs-picker-toggle-indicator .rs-picker-caret-icon,
+.rs-picker-default .rs-picker-toggle.rs-btn .rs-picker-toggle-indicator .rs-picker-clean {
+  top: 10px;
+}
+.rs-picker-default:not(.rs-picker-disabled) .rs-btn:hover,
+.rs-picker-default:not(.rs-picker-disabled) .rs-btn:focus,
+.rs-picker-default:not(.rs-picker-disabled) .rs-btn-active,
+.rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle:hover,
+.rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle:focus,
+.rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle-active {
+  border-color: transparent;
+}
+.rs-picker-toggle-active,
+.rs-picker.rs-picker-focused {
+  box-shadow: none;
+}
+.rs-picker-has-value .rs-btn .rs-picker-toggle-value,
+.rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
+  color: var(--dark);
+}
+.rs-picker-menu,
+.rs-picker-popup {
+  border-radius: 0.625rem;
+  background-color: var(--white);
+}
+.rs-picker-menu {
+  z-index: 1060;
+}
+.rs-picker-popup {
+  border-color: var(--dark);
+}
+.rs-picker-popup .rs-picker-item,
+.rs-picker-select-menu-item {
+  color: var(--dark);
+}
+.rs-picker-select-menu-item:hover,
+.rs-picker-select-menu-item.rs-picker-select-menu-item-focus {
+  background-color: var(--light);
+  color: var(--dark);
+}
+.rs-picker-popup .rs-picker-item.active,
+.rs-picker-select-menu-item.rs-picker-select-menu-item-active {
+  background-color: var(--light);
+  color: var(--primary);
+  font-weight: bold;
+}
+.rs-picker-menu .rs-picker-search-bar .rs-picker-search-bar-input {
+  border-color: var(--border);
+  border-radius: 0.625rem;
+  background-color: var(--light);
+  color: var(--dark);
+  font-size: 15px;
+}
+.rs-picker-menu .rs-picker-search-bar .rs-picker-search-bar-input:focus,
+.rs-picker-menu .rs-picker-search-bar .rs-picker-search-bar-input:hover:not(:disabled) {
+  border-color: var(--primary);
+  outline: 0;
+}
+
+/* CKEditor 5. `html:root` outranks the editor's own :root defaults, which load later and would otherwise stay white. */
+html:root {
+  --ck-border-radius: 0.625rem;
+  --ck-custom-background: var(--white);
+  --ck-custom-foreground: var(--white);
+  --ck-custom-border: var(--border);
+  --ck-color-base-foreground: var(--ck-custom-background);
+  --ck-color-base-background: var(--white);
+  --ck-color-base-border: var(--border);
+  --ck-color-focus-border: var(--primary);
+  --ck-color-text: var(--dark);
+  --ck-color-shadow-drop: var(--surface-2);
+  --ck-color-shadow-inner: var(--surface-2);
+  --ck-focus-outer-shadow: var(--surface-2);
+  --ck-color-button-default-background: var(--ck-custom-background);
+  --ck-color-button-default-hover-background: var(--surface-2);
+  --ck-color-button-default-active-background: var(--surface-2);
+  --ck-color-button-default-active-shadow: var(--surface-2);
+  --ck-color-button-default-disabled-background: var(--ck-custom-background);
+  --ck-color-button-on-background: var(--ck-custom-foreground);
+  --ck-color-button-on-hover-background: var(--surface-2);
+  --ck-color-button-on-active-background: var(--surface-2);
+  --ck-color-button-on-active-shadow: var(--surface-2);
+  --ck-color-button-on-disabled-background: var(--ck-custom-foreground);
+  --ck-color-button-on-color: var(--primary);
+  --ck-color-dropdown-panel-background: var(--ck-custom-background);
+  --ck-color-dropdown-panel-border: var(--ck-custom-foreground);
+  --ck-color-split-button-hover-background: var(--ck-color-button-default-hover-background);
+  --ck-color-split-button-hover-border: var(--ck-custom-foreground);
+  --ck-color-input-background: var(--ck-custom-background);
+  --ck-color-input-border: var(--border);
+  --ck-color-input-text: var(--dark);
+  --ck-color-input-disabled-background: hsl(255, 4%, 21%);
+  --ck-color-input-disabled-border: hsl(250, 3%, 38%);
+  --ck-color-input-disabled-text: hsl(0, 0%, 78%);
+  --ck-color-labeled-field-label-background: var(--ck-custom-background);
+  --ck-color-list-background: var(--ck-custom-background);
+  --ck-color-list-button-hover-background: var(--ck-color-base-foreground);
+  --ck-color-list-button-on-background: var(--primary);
+  --ck-color-list-button-on-text: var(--font-white);
+  --ck-color-panel-background: var(--ck-custom-background);
+  --ck-color-panel-border: var(--ck-custom-border);
+  --ck-color-toolbar-background: var(--ck-custom-background);
+  --ck-color-toolbar-border: var(--ck-custom-border);
+  --ck-color-tooltip-background: hsl(252, 7%, 14%);
+  --ck-color-tooltip-text: hsl(0, 0%, 93%);
+  --ck-color-image-caption-background: hsl(0, 0%, 97%);
+  --ck-color-image-caption-text: hsl(0, 0%, 20%);
+  --ck-color-widget-blurred-border: hsl(0, 0%, 87%);
+  --ck-color-widget-hover-border: hsl(43, 100%, 68%);
+  --ck-color-widget-editable-focus-background: var(--white);
+  --ck-color-link-default: hsl(190, 100%, 75%);
+}
+.ck-editor__editable_inline:not(.ck-comment__input *) {
+  background: var(--white);
+  color: var(--dark);
+  height: 250px;
+  min-height: 200px;
+  overflow-y: auto;
+}
